@@ -19,3 +19,10 @@ if __name__ == '__main__':
     options5=0, # disable switched shunt adjustment.
   )
   
+# rarray = psspy.abrnreal(-1)
+# print("hi")
+# print(psspy.abrnreal(-1,1,1,1,1))  
+ierr, xarray = psspy.abrncplx(-1, 1, 1, 1, 1, 'RX')
+ierr, rarray = psspy.abrnreal(-1, 1, 1, 1, 1, 'CHARGING')
+for i in rarray:
+      print(i)
