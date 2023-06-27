@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 #--------------------------------
 # PSS/E Saved case
 
+
 CASE = r"C:\Users\jassi\Downloads\KERALA_sld.sav"
 CASE1 = r"C:\Users\jassi\Downloads\KERALA_sld_100.sav"
 CASE2 = r"C:\Users\jassi\Downloads\KERALA_sld_400.sav"
@@ -33,11 +34,12 @@ ierr, [Len] = psspy.abrnreal(-1, 1, 1, 1, 1, 'LENGTH')
 ierr, [p_val] = psspy.abrnreal(-1, 1, 1, 1, 1, 'P')
 ierr, [q_val] = psspy.abrnreal(-1, 1, 1, 1, 1, 'Q')
 ierr, [mva_val] = psspy.abrnreal(-1, 1, 1, 1, 1, 'MVA') 
-
 ierr, [tot_pload] = psspy.aareareal(-1,1,'PLOAD')
 ierr, [tot_qload] = psspy.aareareal(-1,1,'QLOAD') 
 ierr, [tot_pgen] = psspy.aareareal(-1,1,'PGEN')
-ierr, [tot_qgen] = psspy.aareareal(-1,1,'QGEN') 
+ierr, [tot_qgen] = psspy.aareareal(-1,1,'QGEN')
+
+ 
 pload =[]
 qload = []
 pgen = []
@@ -70,7 +72,7 @@ print("total Q load:",tot_qload[0])
 print("total P GEN:",tot_pgen[0])
 print("total Q GEN:",tot_qgen[0])
 
-
+#-------------------------------------------------------------------
 psspy.case(CASE1)
 psspy.fnsl(
     options1=0, # disable tap stepping adjustment.
@@ -117,6 +119,7 @@ print("total Q load:",tot_qload[0])
 print("total P GEN:",tot_pgen[0])
 print("total Q GEN:",tot_qgen[0])
 
+#-------------------------------------------------------------------
 
 psspy.case(CASE2)
 psspy.fnsl(
@@ -164,6 +167,7 @@ print("total Q load:",tot_qload[0])
 print("total P GEN:",tot_pgen[0])
 print("total Q GEN:",tot_qgen[0])
 
+#-------------------------------------------------------------------
 
 psspy.case(CASE3)
 psspy.fnsl(
@@ -179,7 +183,6 @@ ierr, [Len] = psspy.abrnreal(-1, 1, 1, 1, 1, 'LENGTH')
 ierr, [p_val] = psspy.abrnreal(-1, 1, 1, 1, 1, 'P')
 ierr, [q_val] = psspy.abrnreal(-1, 1, 1, 1, 1, 'Q')
 ierr, [mva_val] = psspy.abrnreal(-1, 1, 1, 1, 1, 'MVA') 
-
 ierr, [tot_pload] = psspy.aareareal(-1,1,'PLOAD')
 ierr, [tot_qload] = psspy.aareareal(-1,1,'QLOAD') 
 ierr, [tot_pgen] = psspy.aareareal(-1,1,'PGEN')
@@ -210,7 +213,7 @@ print("total Q load:",tot_qload[0])
 print("total P GEN:",tot_pgen[0])
 print("total Q GEN:",tot_qgen[0])
 
-
+#-------------------------------------------------------------------
 
 with pd.ExcelWriter('D:\Dev\PSSE Automation\RE_data.xlsx.xlsx') as writer:  
     df.to_excel(writer, sheet_name='SYS_normal')
@@ -227,6 +230,7 @@ index = pd.Index(['normal','+100MW - IDK','+400MW - halfPLKD','+700MW - halfPLKD
 dff.set_index(index)
 print(dff)
 dff.plot()
+# df2["P"].plot(kind = 'hist')
 plt.show()
 
 # dff.to_csv('D:\Dev\PSSE Automation\data2.csv',mode='a',index=False,header=False)
