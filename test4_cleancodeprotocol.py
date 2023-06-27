@@ -24,6 +24,7 @@ import matplotlib.pyplot as plt
 # PSS/E Saved case
 
 def process_data(x):
+      ierr, [sidd] = psspy.abrnchar(-1, 1, 1, 1, 1,'ID')
       ierr, count = psspy.abrncount(-1, 1, 1, 1, 1)
       ierr, [frombus] = psspy.abrnint(-1, 1, 1, 1, 1,'FROMNUMBER')
       ierr, [fromname] = psspy.abrnchar(-1, 1, 1, 1, 1,'FROMNAME')
@@ -41,6 +42,7 @@ def process_data(x):
       qload.append(tot_qload[0])
       pgen.append(tot_pgen[0])
       qgen.append(tot_qgen[0])
+      x['SID'] = sidd
       x['FROM BUS'] = frombus
       x['FROMNAME'] = fromname
       x['TO BUS'] = tobus
@@ -78,7 +80,7 @@ psspy.case(CASE3)
 df3 = pd.DataFrame()
 process_data(df3)
 
-with pd.ExcelWriter('D:\Dev\PSSE Automation\RE_data.xlsx.xlsx') as writer:  
+with pd.ExcelWriter('D:\Dev\PSSE Automation\RE_data.xlsx') as writer:  
     df.to_excel(writer, sheet_name='SYS_normal')
     df1.to_excel(writer, sheet_name='SYS+100MW')
     df2.to_excel(writer, sheet_name='SYS+400MW')
