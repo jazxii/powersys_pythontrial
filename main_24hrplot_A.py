@@ -90,6 +90,6 @@ df['P(+400MW)'] = p_val2
 df['P(+700MW)'] = p_val3
 
 
-df.to_csv('D:\Dev\PSSE Automation\data_P_comp.csv',mode='a',index=True,header=True)
+df.to_csv('D:\Dev\PSSE Automation\data_P_comp1.csv',mode='a',index=True,header=True)
 
 print(df) 

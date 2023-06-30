@@ -2,12 +2,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-df = pd.read_csv('D:\Dev\PSSE Automation\data_P_comp.csv')
+df = pd.read_csv('D:\Dev\PSSE Automation\data_P_comp1.csv')
 print(df.head)
 
 # fig, ax = plt.subplots(figsize=(12,5))
-# df[['KL_DEMAND','KL_HYDRO_GEN']].plot(use_index=True)
-# df[['P','P(+100MW)','P(+400MW)','P(+700MW)','KL_DEMAND']].plot(use_index=True,secondary_y=True)
+# # df[['KL_DEMAND','KL_HYDRO_GEN']].plot(use_index=True)
+# df[['P','P(+100MW)','P(+400MW)','P(+700MW)','KL_DEMAND','KL_HYDRO_GEN']].plot(use_index=True,secondary_y=True)
 # plt.show() 
 
 
